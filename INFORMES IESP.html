@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFORMES IESP</title>
+    <!-- CSS Embedido -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #004d99; /* Azul Policía */
+            color: white;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h1, h2 {
+            color: #004d99;
+        }
+
+        header h1 {
+            color: white;
+            margin: 0;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+            font-size: 16px;
+        }
+
+        textarea#informeSalida {
+            font-family: 'Courier New', monospace; 
+            background-color: #e9e9e9;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #4CAF50; /* Verde, para destacar la acción principal */
+            color: white;
+            padding: 15px 15px; 
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+            margin: 20px 0;
+        }
+
+        /* Mensaje de confirmación (reemplaza alert) */
+        #mensajeConfirmacion {
+            padding: 10px;
+            margin-top: 15px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            text-align: center;
+            display: none; /* Oculto por defecto */
+        }
+
+        /* Adaptación para celular */
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>INFORMES IESP</h1>
+        <p>Instituto de Enseñanza Superior de Policía</p>
+    </header>
+
+    <div class="container">
+        <h2>1. Ingrese los Datos Variables</h2>
+        
+        <div class="input-group">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha">
+        </div>
+        
+        <div class="input-group">
+            <label for="hora">Hora:</label>
+            <input type="time" id="hora">
+        </div>
+        
+        <div class="input-group">
+            <label for="referencia">Referencia/Asunto:</label>
+            <input type="text" id="referencia" placeholder="Ej: Control de móviles de prevención">
+        </div>
+        
+        <div class="input-group">
+            <label for="accionPrincipal">Acción Principal:</label>
+            <input type="text" id="accionPrincipal" placeholder="Ej: verificar el estado de las aulas">
+        </div>
+        
+        <div class="input-group">
+            <label for="complementoNovedad">Detalle/Complemento de la Novedad:</label>
+            <textarea id="complementoNovedad" rows="4" placeholder="Ej: detallar cualquier novedad o indicar que no hubo."></textarea>
+        </div>
+        
+        <div class="input-group">
+            <label for="oficialNombre">Oficial que Informa (Grado y Nombre):</label>
+            <select id="oficialNombre">
+                <option value="" disabled selected>-- Seleccione el Oficial --</option>
+                <!-- LISTA DE OFICIALES DEL USUARIO -->
+                <option value="Oficial Auxiliar Alvarez Angel Adriàn">Oficial Auxiliar Alvarez Angel Adriàn</option>
+                <option value="Oficial Auxiliar Brito Carlos Augusto">Oficial Auxiliar Brito Carlos Augusto</option>
+                <option value="Oficial Auxiliar Andrades Miguel Augusto">Oficial Auxiliar Andrades Miguel Augusto</option>
+                <option value="Oficial Auxiliar Díaz Rita Micaela">Oficial Auxiliar Díaz Rita Micaela</option>
+                <option value="Oficial Auxiliar Morales Belén Rocío">Oficial Auxiliar Morales Belén Rocío</option>
+                <option value="Oficial Auxiliar Leal Paul William">Oficial Auxiliar Leal Paul William</option>
+                <option value="Oficial Auxiliar Ponce Sergio Edgardo">Oficial Auxiliar Ponce Sergio Edgardo</option>
+                <option value="Oficial Auxiliar Gallo Matías Juan José">Oficial Auxiliar Gallo Matías Juan José</option>
+                <option value="Oficial Auxiliar Galindez Emilse Agustina">Oficial Auxiliar Galindez Emilse Agustina</option>
+                <option value="Oficial Auxiliar Miranda Waldino René">Oficial Auxiliar Miranda Waldino René</option>
+                <option value="Oficial Ayudante Cajal Natalia Belén">Oficial Ayudante Cajal Natalia Belén</option>
+                <option value="Oficial Ayudante Montes Luciana del Carmen">Oficial Ayudante Montes Luciana del Carmen</option>
+                <option value="Oficial Subayudante Pedraza Ramiro Ignacio">Oficial Subayudante Pedraza Ramiro Ignacio</option>
+            </select>
+        </div>
+        
+        <!-- UN SOLO BOTÓN QUE PROCESA, COPIA Y ABRE WHATSAPP -->
+        <button id="btnProcesar">Generar, Copiar y Abrir WhatsApp</button>
+        
+        <!-- Mensaje de confirmación -->
+        <div id="mensajeConfirmacion"></div>
+
+        <hr>
+
+        <h2>2. Vista Previa del Informe</h2>
+        <textarea id="informeSalida" rows="15" readonly placeholder="El informe generado aparecerá aquí."></textarea>
+    </div>
+
+    <!-- Lógica JavaScript Embedida -->
+    <script>
+
+// Función para mostrar mensajes de éxito o error en el div
+        function mostrarMensaje(texto, esError = false) {
+            const mensajeDiv = document.getElementById('mensajeConfirmacion');
+            mensajeDiv.textContent = esError ? `❌ ¡ERROR! ${texto}` : `✅ ${texto}`;
+            mensajeDiv.style.display = 'block';
+            mensajeDiv.style.backgroundColor = esError ? '#f8d7da' : '#d4edda';
+            mensajeDiv.style.color = esError ? '#721c24' : '#155724';
+            
+            // Ocultar después de 5 segundos
+            setTimeout(() => {
+                mensajeDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        // --- Función Única: Generar y Abrir WhatsApp con texto pre-escrito (Versión para Móvil) ---
+        function procesarInforme() {
+            // 1. OBTENER VALORES
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+            const referencia = document.getElementById('referencia').value.toUpperCase(); 
+            const accionPrincipal = document.getElementById('accionPrincipal').value;
+            let complementoNovedad = document.getElementById('complementoNovedad').value.trim();
+            const oficialNombre = document.getElementById('oficialNombre').value;
+            const informeSalida = document.getElementById('informeSalida');
+
+            // VALIDACIONES
+            if (oficialNombre === "") {
+                mostrarMensaje("Debe seleccionar el Oficial que Informa de la lista desplegable.", true);
+                return; 
+            }
+            if (!fecha || !hora || !referencia || !accionPrincipal) {
+                 mostrarMensaje("Todos los campos de Fecha, Hora, Referencia y Acción Principal son obligatorios.", true);
+                return; 
+            }
+            
+            // PREPARACIÓN DEL COMPLEMENTO DE NOVEDAD
+            if (complementoNovedad !== "") {
+                complementoNovedad = " " + complementoNovedad;
+            }
+            
+            // 2. ENSAMBLAR EL INFORME
+            const separador = "\n➖➖➖➖➖➖➖➖\n";
+            const dobleSalto = "\n\n";
+            
+            const informeTexto = 
+                "🇦🇷 *INSTITUTO DE ENSEÑANZA SUPERIOR DE POLICIA \"GENERAL JOSÉ FRANCISCO DE SAN MARTÍN\"* 🇦🇷" + separador +
+                "🇦🇷 *GUARDIA DE PREVENCIÓN* 🇦🇷" + separador +
+                "*FECHA:* " + fecha + separador +
+                "*REF.:* " + referencia + separador +
+                "Para conocimiento de la Superioridad, se informa que a horas " + hora + 
+                " se procedió a realizar el " + accionPrincipal + "." + 
+                complementoNovedad + " _Se Adjunta Imagen Fotográfica_" + separador +
+                "*INFORMA:* *" + oficialNombre + "* (Oficial de Servicio del I.E.S.P. \"G.J.F.S.M.\")." + dobleSalto +
+                "*SUPERIOR OPERATIVO*: 🔶🌿 *Comisario Inspector Lic. Hugo Javier Fernando Véliz* _(Vicerrector del I.E.S.P. \"G.J.F.S.M\")_" + dobleSalto +
+                "*SUPERVISOR GENERAL*: 🔶🔶🔶🌿 *Comisario General Dadin Claudio Néstor* (Rector del I.E.S.P. \"G.J.F.S.M.\")";
+            
+            // 3. MOSTRAR TEXTO EN VISTA PREVIA
+            informeSalida.value = informeTexto;
+            
+            // 4. GENERAR ENLACE WHATSAPP CON TEXTO PRE-ESCRITO
+            const encodedText = encodeURIComponent(informeTexto);
+            
+            // Usamos el dominio wa.me, estable y compatible con móviles.
+            const whatsappURL = `https://wa.me/?text=${encodedText}`;
+
+            // 5. ABRIR WHATSAPP
+            window.open(whatsappURL, '_blank');
+            
+            mostrarMensaje("¡Informe listo y abriendo WhatsApp con el texto pre-escrito!");
+        }
+
+
+        // *******************************************************************
+        // LÓGICA DE INICIALIZACIÓN (Fecha por defecto y Event Listener)
+        // *******************************************************************
+        
+        window.onload = function() {
+            // 1. Establecer fecha y hora actuales por defecto
+            const now = new Date();
+            
+            // Configurar la fecha (formato YYYY-MM-DD)
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            document.getElementById('fecha').value = `${year}-${month}-${day}`;
+            
+            // Configurar la hora (formato HH:MM)
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('hora').value = `${hours}:${minutes}`;
+
+            // 2. Conectar la función principal al botón
+            const btnProcesar = document.getElementById('btnProcesar');
+            if (btnProcesar) {
+                btnProcesar.addEventListener('click', procesarInforme);
+            }
+                }
